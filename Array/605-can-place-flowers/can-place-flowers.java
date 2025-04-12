@@ -18,11 +18,9 @@ class Solution {
                 extended.set(i, 1);
                 n-=1;
             }
-            System.out.println(n);
             if(n==0) {
                 return true;
             }
-            System.out.println(n);
         }
         return false;
     }
