@@ -14,11 +14,8 @@ class Solution {
 
         List<Boolean> out = new ArrayList<>();
         for(int num: candies) {
-            if (num+extraCandies >= maxValue) {
-                out.add(true);
-            } else {
-                out.add(false);
-            }
+            out.add(num+extraCandies >= maxValue);
+            
         }
 
         return out;
