@@ -10,11 +10,8 @@ class Solution {
         extended.add(0);
 
         for(int i=1; i<extended.size()-1; i++) {
-            int first = extended.get(i-1);
-            int curr = extended.get(i);
-            int last = extended.get(i+1);
 
-            if (first == 0  && curr == 0 && last == 0) {
+            if (extended.get(i-1) == 0  && extended.get(i) == 0 && extended.get(i+1) == 0) {
                 extended.set(i, 1);
                 n-=1;
             }
