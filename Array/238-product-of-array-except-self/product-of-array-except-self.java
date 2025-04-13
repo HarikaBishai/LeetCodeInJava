@@ -6,7 +6,6 @@ class Solution {
         
         Arrays.fill(out, 1);
 
-        System.out.println(Arrays.toString(nums));
         int leftProduct = 1;
 
         for(int i=1;i<nums.length;i++) {
