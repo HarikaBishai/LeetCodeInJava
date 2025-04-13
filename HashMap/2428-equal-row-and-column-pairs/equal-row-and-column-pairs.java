@@ -12,7 +12,6 @@ class Solution {
             map.put(rowString, map.getOrDefault(rowString, 0)+1);
         }
 
-        System.out.println(map);
 
         for(int i=0;i<n;i++) {
             int[] col = new int[n];
