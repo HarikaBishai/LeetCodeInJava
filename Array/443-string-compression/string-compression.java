@@ -11,33 +11,32 @@ class Solution {
             char c = chars[i];
             if (c == lastChar) {
                 count++;
-            } else {
-
+            } 
+            
+            if (i == n-1 || c != lastChar) {
                 if(count != 1) {
                     char[] strCount = Integer.toString(count).toCharArray();
                     for (char sc: strCount) {
-                    
                         chars[index++] = sc;
-                       
                     }
-                    
-
                 }
-
-                lastChar = c;
-                chars[index++] = c;
-                count = 1;
+                if (c != lastChar) {
+                    lastChar = c;
+                    chars[index++] = c;
+                    count = 1;
+                }
+               
             }
         }
 
-        if (count!=1) {
-            char[] strCount = Integer.toString(count).toCharArray();
-                    for (char sc: strCount) {
-                    
-                        chars[index++] = sc;
-                       
-                    }
-        } 
+        // if (count!=1) {
+        //     char[] strCount = Integer.toString(count).toCharArray();
+        //     for (char sc: strCount) {
+            
+        //         chars[index++] = sc;
+                
+        //     }
+        // } 
         return index;
     }
 }
