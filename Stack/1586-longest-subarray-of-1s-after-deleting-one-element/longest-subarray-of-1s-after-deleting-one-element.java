@@ -7,7 +7,7 @@ class Solution {
 
         for(int r=0;r<nums.length;r++) {
             currSum += nums[r];
-            if((r-l+1)-currSum > 1) {
+            while((r-l+1)-currSum > 1) {
                 currSum-=nums[l];
                 l++;
             }
