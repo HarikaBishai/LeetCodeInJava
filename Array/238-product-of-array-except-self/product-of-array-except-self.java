@@ -4,7 +4,7 @@ class Solution {
 
         int[] out = new int[nums.length];
         
-        Arrays.fill(out, 1);
+        out[0] = 1; 
 
         int leftProduct = 1;
 
