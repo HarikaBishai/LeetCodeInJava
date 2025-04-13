@@ -5,9 +5,6 @@ class Solution {
 
         Collections.reverse(words);
 
-        
-
-        
         return String.join(" ", words);
 
     }
