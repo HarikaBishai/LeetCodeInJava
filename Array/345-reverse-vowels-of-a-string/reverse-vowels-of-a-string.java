@@ -8,14 +8,15 @@ class Solution {
         int l = 0;
 
         while(l<r) {
-            if(!vowels.contains(out.charAt(l))) {
+            char leftChar = out.charAt(l);
+            char rightChar = out.charAt(r);
+            if(!vowels.contains(leftChar)) {
                 l++;
-            } else if(!vowels.contains(out.charAt(r))) {
+            } else if(!vowels.contains(rightChar)) {
                 r--;
             } else {
-                char temp = out.charAt(l);
-                out.setCharAt(l,out.charAt(r));
-                out.setCharAt(r, temp);
+                out.setCharAt(l,rightChar);
+                out.setCharAt(r, leftChar);
                 l++;
                 r--;
             }
