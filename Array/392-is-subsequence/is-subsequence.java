@@ -3,8 +3,7 @@ class Solution {
         if(s.length() == 0) return true;
         int index = 0;
         for(int i=0;i<t.length();i++) {
-            char c = t.charAt(i);
-            if(c == s.charAt(index)) {
+            if(t.charAt(i) == s.charAt(index)) {
                 index++;
             }
             if (index==s.length()) {
