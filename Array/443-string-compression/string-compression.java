@@ -1,13 +1,11 @@
 class Solution {
     public int compress(char[] chars) {
-        int out = 0;
 
         int n = chars.length;
-        if(n==0) return out;
+        if(n==0) return 0;
 
         char lastChar = chars[0];
         int count = 1;
-        out = 1;
         int index = 1;
         for(int i=1;i<n;i++) {
             char c = chars[i];
