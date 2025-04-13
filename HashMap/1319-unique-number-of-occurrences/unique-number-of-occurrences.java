@@ -8,13 +8,17 @@ class Solution {
 
         Set<Integer> set = new HashSet<>();
 
-        for(int value: map.values()) {
-            if(set.contains(value)) {
-                return false;
-            }
-            set.add(value);
-        }
-        return true;
+
+        return map.values().size() == new HashSet<>(map.values()).size();
+        // for(int value: map.values()) {
+        //     if(set.contains(value)) {
+        //         return false;
+        //     }
+        //     set.add(value);
+        // }
+
+
+        // return true;
         
     }
 }
