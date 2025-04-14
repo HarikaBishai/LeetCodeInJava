@@ -9,6 +9,7 @@ class Solution {
             return false;
         }
     }
+
     public String decodeString(String s) {
         Stack<String> stk = new Stack<>();
 
@@ -46,7 +47,7 @@ class Solution {
             }
         }
         Collections.reverse(stk);
-        String result =  stk.stream().collect(Collectors.joining());
+        String result =  String.join("", stk);
         return new StringBuilder(result).reverse().toString();
        
     }
