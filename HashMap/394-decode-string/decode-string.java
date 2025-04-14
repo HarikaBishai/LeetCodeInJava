@@ -15,7 +15,6 @@ class Solution {
         for(char c: s.toCharArray()) {
             if(c!=']') {
                 stk.push(String.valueOf(c));
-                System.out.println(stk);
             } else {
                 StringBuilder currStr = new StringBuilder();
 
