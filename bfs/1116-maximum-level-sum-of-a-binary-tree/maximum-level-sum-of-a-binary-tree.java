@@ -43,7 +43,6 @@ class Solution {
                 maxSum = currSum;
                 row = currRow;
             }
-            System.out.println(currSum);
             currRow++;
         }
 
