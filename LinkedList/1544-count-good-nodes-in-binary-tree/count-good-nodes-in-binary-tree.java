@@ -15,8 +15,7 @@
  */
 class Solution {
     public int goodNodes(TreeNode root) {
-        if(root==null) return 0;
-
+        
         return getgoodNode(root, root.val);
         
     }
