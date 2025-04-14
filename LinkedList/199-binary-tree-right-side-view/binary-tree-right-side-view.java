@@ -26,16 +26,18 @@ class Solution {
             int length = q.size();
             for(int i=0;i<length;i++) {
                 TreeNode node = q.poll();
-                if(i == length-1) {
+                if(i == 0) {
                     out.add(node.val);
+                }
+
+                if(node.right!=null) {
+                    q.offer(node.right);
                 }
 
                 if(node.left!=null) {
                     q.offer(node.left);
                 }
-                if(node.right!=null) {
-                    q.offer(node.right);
-                }
+                
             }
         }
 
