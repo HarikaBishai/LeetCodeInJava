@@ -5,7 +5,6 @@ class Solution {
         for(int i=0;i<height.length;i++) {
             while(!stk.isEmpty() && height[stk.peek()] < height[i]) {
                 int curr = stk.pop();
-
                 if(!stk.isEmpty()) {
                     int leftIndex = stk.peek();
                     int leftHeight = height[leftIndex];
@@ -13,7 +12,6 @@ class Solution {
 
                     int depth = Math.min(leftHeight, rightHeight) - height[curr];
                     int breadth = i-leftIndex-1;
-
                     water += depth * breadth;
                 }
             }
