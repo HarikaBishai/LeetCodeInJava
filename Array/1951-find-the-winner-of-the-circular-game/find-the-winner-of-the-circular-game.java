@@ -12,10 +12,7 @@ class Solution {
 
         while(nums.size() > 1) {
             curr += (k-1);
-            int index = curr%(nums.size());
-            System.out.println(nums);
-            System.out.println(index);
-            
+            int index = curr%(nums.size());            
             nums.remove(index); 
             curr=index;
         }
