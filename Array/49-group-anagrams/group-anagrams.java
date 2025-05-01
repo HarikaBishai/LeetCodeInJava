@@ -13,10 +13,10 @@ class Solution {
             group.add(s);
         }
 
-        for(List<String> group: map.values()) {
-            out.add(group);
-        }
-        return out;
+        // for(List<String> group: map.values()) {
+        //     out.add(group);
+        // }
+        return new ArrayList<>(map.values());
 
 
     }
