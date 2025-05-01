@@ -1,42 +1,43 @@
 class Solution {
     public int compress(char[] chars) {
+        int out = 0;
+        if(chars.length == 0){
+            return out;
+        }
 
-        int n = chars.length;
-        if(n==0) return 0;
-
-        char lastChar = chars[0];
+        char last = chars[0];
         int count = 1;
-        int index = 1;
-        for(int i=1;i<n;i++) {
-            char c = chars[i];
-            if (c == lastChar) {
-                count++;
-            } 
+        
+        int index = 0;
+        for(int i =1;i<chars.length;i++) {
+            char curr = chars[i];
             
-            if (i == n-1 || c != lastChar) {
-                if(count != 1) {
-                    char[] strCount = Integer.toString(count).toCharArray();
-                    for (char sc: strCount) {
-                        chars[index++] = sc;
+            if(last!=curr) {
+                chars[index++] = last;
+                if(count > 1) {
+                    for(char c: (count+"").toCharArray()) {
+                        chars[index++] = c;
                     }
-                }
-                if (c != lastChar) {
-                    lastChar = c;
-                    chars[index++] = c;
                     count = 1;
                 }
-               
+                last = curr;
+                
+            } else {
+                count++;
             }
         }
 
-        // if (count!=1) {
-        //     char[] strCount = Integer.toString(count).toCharArray();
-        //     for (char sc: strCount) {
-            
-        //         chars[index++] = sc;
-                
-        //     }
-        // } 
+        chars[index++] = last;
+        if(count > 1) {
+            for(char c: (count+"").toCharArray()) {
+                chars[index++] = c;
+            }
+            count = 1;
+        }
+
         return index;
+
+
+        
     }
 }
