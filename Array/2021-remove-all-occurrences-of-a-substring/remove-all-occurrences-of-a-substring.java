@@ -3,7 +3,6 @@ class Solution {
     public String removeOccurrences(String s, String part) {
 
         Deque<Character> dq = new ArrayDeque<>();
-
         StringBuilder sb= new StringBuilder();
         int partLen = part.length();
 
