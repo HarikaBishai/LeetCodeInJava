@@ -4,9 +4,9 @@ class Solution {
     private int COLS;
     private Set<String> visited;
     private char[][] grid;
+
     public  void dfs(int r, int c) {
         visited.add(r+"_"+c);
-
         int[][] dirs = {{-1,0}, {1,0}, {0,-1}, {0,1}};
 
         for(int[] dir : dirs ) {
