@@ -32,7 +32,6 @@ class Solution {
             for(char c: (count+"").toCharArray()) {
                 chars[index++] = c;
             }
-            count = 1;
         }
 
         return index;
