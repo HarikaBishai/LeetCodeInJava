@@ -1,23 +1,6 @@
 class Solution {
 
-    private Stack<Character> stk;
-
-    public boolean checkEqual(String part) {
-        Stack<Character> temp = new Stack<>();
-        temp.addAll(stk);
-        for(int i = part.length()-1; i>=0;i--) {
-            if(temp.peek()!=part.charAt(i)) {
-
-                return false;
-            }
-            temp.pop();
-        }
-        return true;
-    }
-
     public String removeOccurrences(String s, String part) {
-
-        // stk = new Stack<>();
 
         Deque<Character> dq = new ArrayDeque<>();
 
