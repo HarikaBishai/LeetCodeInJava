@@ -8,14 +8,9 @@ class Solution {
             char[] charArray = s.toCharArray();
             Arrays.sort(charArray);
             String sortedString = new String(charArray);
-
             map.putIfAbsent(sortedString, new ArrayList<>());
-
             List<String> group = map.get(sortedString);
             group.add(s);
-
-        
-            
         }
 
         for(List<String> group: map.values()) {
