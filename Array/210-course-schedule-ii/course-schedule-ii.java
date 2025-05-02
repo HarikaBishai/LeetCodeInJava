@@ -49,13 +49,9 @@ class Solution {
             
         }
 
-        System.out.println(out);
 
         return (out.size() != numCourses) ? new int[]{} 
             : out.stream().mapToInt(Integer::intValue).toArray();
-
-
-
 
     }
 }
