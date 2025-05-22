@@ -8,7 +8,8 @@ class Solution {
 
             if(!stk.isEmpty() && stk.peek()[1] >= interval[0]) {
                 int[] peek = stk.pop();
-                stk.push(new int[] {peek[0], Math.max(interval[1], peek[1])});
+                peek[1] = Math.max(interval[1], peek[1]);
+                stk.push(peek);
             }
             else {
                 stk.push(interval);
