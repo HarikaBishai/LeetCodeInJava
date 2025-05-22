@@ -1,26 +1,26 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (a,b)-> a[0]-b[0]);
-
         Stack<int[]> stk = new Stack<>();
 
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+
         for(int[] interval: intervals) {
+
             if(!stk.isEmpty() && stk.peek()[1] >= interval[0]) {
                 int[] peek = stk.pop();
-                interval[0] = peek[0];
-                interval[1] = Math.max(peek[1], interval[1]);
+                stk.push(new int[] {peek[0], Math.max(interval[1], peek[1])});
             }
-
-            stk.push(interval);
+            else {
+                stk.push(interval);
+            }
         }
-        int[][] out = new int[stk.size()][];
+
+        int[][] out = new int[stk.size()][2];
         int i = stk.size()-1;
-
-        while(i>=0) {
-            out[i] = stk.pop();
-            i--;
+        while(!stk.isEmpty()){
+            out[i--] = stk.pop();
         }
-        return out;
 
+        return out;
     }
 }
