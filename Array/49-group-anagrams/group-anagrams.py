@@ -4,12 +4,11 @@ class Solution:
         groups = defaultdict(list)
 
         for s in strs:
-            # char_list = list(s)
-            # char_list.sort()
-            # sorted_s = "".join(char_list)
-            # groups[sorted_s].append(s)
+            char_list = list(s)
+            char_list.sort()
+            groups["".join(char_list)].append(s)
 
-            groups["".join(sorted(s))].append(s)
+            # groups["".join(sorted(s))].append(s)
         
         return list(groups.values())
 
