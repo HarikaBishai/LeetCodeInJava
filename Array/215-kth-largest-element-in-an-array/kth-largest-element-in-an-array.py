@@ -4,9 +4,9 @@ class Solution:
         
         h = []
 
-        for i in range(len(nums)):
-            heapq.heappush(h, nums[i])
-            if i >= k:
+        for num in nums:
+            heapq.heappush(h, num)
+            if len(h) > k:
                 heapq.heappop(h)
 
         return h[0]
