@@ -5,7 +5,6 @@ import heapq
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         counter = Counter(nums)
-        print(counter)
         h = []
 
         for key, val in counter.items():
