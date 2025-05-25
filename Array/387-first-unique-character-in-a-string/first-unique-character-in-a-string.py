@@ -1,9 +1,10 @@
-from collections import Counter
+from collections import defaultdict
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        counter = Counter(s)
+        counter = defaultdict(int)
 
-
+        for c in s:
+            counter[c] += 1
         for i in range(len(s)):
             c = s[i]
 
