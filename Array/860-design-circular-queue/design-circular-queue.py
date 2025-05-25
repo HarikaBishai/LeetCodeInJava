@@ -17,12 +17,9 @@ class MyCircularQueue:
     def deQueue(self) -> bool:
         if self.isEmpty():
             return False
-        
         self.head = (self.head + 1)%self.capacity
         self.count -= 1
         return True
-        
-
 
     def Front(self) -> int:
         if self.isEmpty():
