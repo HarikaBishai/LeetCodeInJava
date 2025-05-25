@@ -6,7 +6,8 @@ class Solution:
         for s in strs:
             char_list = list(s)
             char_list.sort()
-            groups["".join(char_list)].append(s)
+            sorted_s = "".join(char_list)
+            groups[sorted_s].append(s)
 
             # groups["".join(sorted(s))].append(s)
         
