@@ -2,10 +2,12 @@ class Solution:
     def myAtoi(self, s: str) -> int:
         s = s.lstrip(" ")
 
-        num = 0
-        sign = 1
         if not s:
             return 0
+
+        num = 0
+        sign = 1
+        
 
         if s[0] in '+-':
             if s[0] == '-':
@@ -15,12 +17,11 @@ class Solution:
         if not s:
             return num
         
-        i = 0
-        while i<len(s):
-            if not s[i].isdigit():
+        for c in s:
+            if not c.isdigit():
                 break
-            num = num*10 + int(s[i])
-            i+=1
+            num = num*10 + int(c)
+           
 
         left_boundary = -pow(2, 31)
         right_boundary = pow(2, 31)-1
