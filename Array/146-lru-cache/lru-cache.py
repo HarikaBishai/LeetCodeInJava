@@ -1,57 +1,60 @@
-class Node:
+class ListNode:
     def __init__(self, key=-1, val=-1):
-        self.key = key
-        self.val = val
         self.prev = None
         self.next = None
-
+        self.key = key
+        self.val = val
 
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.capacity = capacity
-        self.head = Node()
-        self.tail = Node()
-        self.head.next = self.tail
-        self.tail.prev = self.head
-        self.map = {}
+       self.capacity = capacity
+       self.left = ListNode()
+       self.right = ListNode()
+       self.left.next = self.right
+       self.right.prev = self.left
+       self.map = {}
 
-    def remove(self, node: Node) -> Node:
+    def remove(self, node: ListNode) -> ListNode:
         prev = node.prev
         next = node.next
         prev.next = next
         next.prev = prev
-
-    def insertAtTail(self, node):
-        node.next = self.tail
-        prev = self.tail.prev 
+        return node
+    
+    def insertAtRight(self, node:ListNode) -> None:
+        prev = self.right.prev
         prev.next = node
-        self.tail.prev = node
         node.prev = prev
+        
+        self.right.prev = node
+        node.next = self.right
 
     def get(self, key: int) -> int:
+        
         if key in self.map:
-            node = self.map[key]
-            self.remove(node)
-            self.insertAtTail(node)
+            node = self.remove(self.map[key])
+            self.insertAtRight(node)
             return node.val
         return -1
+        
 
     def put(self, key: int, value: int) -> None:
-        newNode = Node(key, value)
+        
+        node = ListNode(key, value)
+
         if key in self.map:
             self.remove(self.map[key])
         else:
-            if len(self.map.keys())+1 > self.capacity:
-                node = self.head.next
-                self.remove(node)
-                del self.map[node.key]
-        self.insertAtTail(newNode)
-        self.map[key] = newNode
-
+            if  1+len(self.map) > self.capacity:
+                leftNode = self.remove(self.left.next)
+                del self.map[leftNode.key]
+        self.map[key] = node
+        self.insertAtRight(node)
 
         
-        
+
+
 
 
 # Your LRUCache object will be instantiated and called as such:
