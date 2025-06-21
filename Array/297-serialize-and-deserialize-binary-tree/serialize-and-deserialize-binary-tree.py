@@ -13,14 +13,12 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-
         result = []
 
         def dfs(node):
             if not node:
                 result.append("N")
-                return 
-            
+                return
             result.append(str(node.val))
             dfs(node.left)
             dfs(node.right)
@@ -35,25 +33,25 @@ class Codec:
         :rtype: TreeNode
         """
 
-        preorder = data.split(",")
+        data = data.split(",")
+
         i = 0
-
-
 
         def dfs():
             nonlocal i
-            if preorder[i] == 'N':
+            if i >= len(data):
+                return
+            
+            if data[i] == "N":
                 i+=1
                 return None
-            node = TreeNode(int(preorder[i]))
+            
+            node = TreeNode(int(data[i]))
             i+=1
             node.left = dfs()
             node.right = dfs()
             return node
-        root = dfs()
-        return root
-
-
+        return dfs()
         
 
 # Your Codec object will be instantiated and called as such:
