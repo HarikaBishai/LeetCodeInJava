@@ -9,8 +9,7 @@ class MyCircularQueue:
     def enQueue(self, value: int) -> bool:
         if self.isFull():
             return False
-        
-        self.queue[(self.head + self.count)%self.capacity ] = value
+        self.queue[(self.head + self.count)%self.capacity] = value
         self.count+=1
         return True
 
@@ -18,7 +17,7 @@ class MyCircularQueue:
         if self.isEmpty():
             return False
         self.head = (self.head + 1)%self.capacity
-        self.count -= 1
+        self.count-=1
         return True
 
     def Front(self) -> int:
@@ -29,7 +28,7 @@ class MyCircularQueue:
     def Rear(self) -> int:
         if self.isEmpty():
             return -1
-        return self.queue[(self.head +  self.count - 1)%self.capacity]
+        return self.queue[(self.head + self.count -1)%self.capacity ]
 
     def isEmpty(self) -> bool:
         return self.count == 0
