@@ -1,10 +1,8 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        
-
-        n = len(s)
         l = 0
-        r = n-1
+
+        r = len(s)-1
 
         while l<=r:
             if s[l].isalnum() and s[r].isalnum():
@@ -18,7 +16,6 @@ class Solution:
             elif s[r].isalnum():
                 l+=1
             else:
-                r-=1
                 l+=1
+                r-=1
         return True
-
