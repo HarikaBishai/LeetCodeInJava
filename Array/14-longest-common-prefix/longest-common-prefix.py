@@ -16,6 +16,7 @@ class Solution:
                 if currStr != strs[j][:i+1]:
                     break
                 j+=1
+                
             if j == len(strs):
                 longestMatch = currStr
             else:
