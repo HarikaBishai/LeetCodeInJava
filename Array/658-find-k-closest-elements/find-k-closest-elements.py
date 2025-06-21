@@ -5,11 +5,10 @@ class Solution:
         r = n-k
 
         while l<r:
-            mid = (l+r)//2
+            m = (l+r)//2
 
-            if x-arr[mid] > arr[mid+k] - x:
-                l = mid+1
+            if x-arr[m] > arr[m+k]-x:
+                l = m+1
             else:
-                r = mid
-            
+                r = m
         return arr[l:l+k]
