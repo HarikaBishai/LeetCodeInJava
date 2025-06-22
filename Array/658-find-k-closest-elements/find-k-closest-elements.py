@@ -7,8 +7,8 @@ class Solution:
         while l<r:
             m = (l+r)//2
 
-            if x-arr[m] > arr[m+k]-x:
-                l = m+1
+            if x-arr[m] > arr[m+k] - x:
+                l=m+1
             else:
-                r = m
+                r=m
         return arr[l:l+k]
