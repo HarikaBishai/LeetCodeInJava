@@ -9,16 +9,14 @@ class TimeMap:
         self.key_time_map[key][timestamp] = value
 
     def get(self, key: str, timestamp: int) -> str:
-
         if key not in self.key_time_map:
             return ""
-
+        
         it = self.key_time_map[key].bisect_right(timestamp)
-
         if it == 0:
             return ""
-        return self.key_time_map[key].peekitem(it - 1)[1]
         
+        return self.key_time_map[key].peekitem(it-1)[1]
 
 
 # Your TimeMap object will be instantiated and called as such:
