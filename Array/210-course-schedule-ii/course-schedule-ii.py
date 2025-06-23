@@ -1,8 +1,10 @@
 from collections import deque
+
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        graph = {i:[] for i in range(numCourses)}
+
         indegree = {i:0 for i in range(numCourses)}
-        graph = {i: [] for i in range(numCourses)}
 
         for v, u in prerequisites:
             graph[u].append(v)
@@ -13,15 +15,15 @@ class Solution:
             if indegree[i] == 0:
                 q.append(i)
         
-
         result = []
+
         while q:
             node = q.popleft()
+
             result.append(node)
 
             for nei in graph[node]:
                 indegree[nei]-=1
                 if indegree[nei] == 0:
                     q.append(nei)
-
         return result if len(result) == numCourses else []
