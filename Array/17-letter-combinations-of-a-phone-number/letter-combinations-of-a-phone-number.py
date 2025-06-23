@@ -18,15 +18,19 @@ class Solution:
             if digits in dp:
                 return dp[digits]
             
-            first_digit = mapping[digits[0]]
+            result = []
+
+            first_digit = digits[0]
             remaining = digits[1:]
             remaining_comb = dfs(remaining)
-            result = []
-            for c in first_digit:
+
+            for c in mapping[first_digit]:
                 for comb in remaining_comb:
-                    result.append(c + comb)
+                    result.append(c+comb)
+            
             dp[digits] = result
             return result
-        
+
         result = dfs(digits)
         return [] if result == [""] else result
+
