@@ -1,12 +1,14 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        stk = []
         path = set()
+        stk = []
+        n = len(nums)
         out = []
 
         def dfs():
-            if len(stk) == len(nums):
-                out.append(stk.copy())
+            if len(stk) == n:
+                out.append(stk[:])
+                return
 
             for num in nums:
                 if num not in path:
