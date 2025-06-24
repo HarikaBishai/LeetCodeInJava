@@ -9,16 +9,16 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
         parent_map = {root: None}
-        def getParentMap(node, parent):
+        def getParentMap(node):
             if node:
                 if node.left:
                     parent_map[node.left] = node
-                    getParentMap(node.left, node)
+                    getParentMap(node.left)
                 if node.right:
                     parent_map[node.right] = node
-                    getParentMap(node.right, node)
+                    getParentMap(node.right)
         
-        getParentMap(root, None)
+        getParentMap(root)
 
         path_nodes_p = set()
 
