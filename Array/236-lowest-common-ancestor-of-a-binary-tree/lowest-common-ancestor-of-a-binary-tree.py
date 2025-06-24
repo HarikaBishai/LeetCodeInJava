@@ -8,12 +8,15 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
-        parent_map = {}
+        parent_map = {root: None}
         def getParentMap(node, parent):
             if node:
-                parent_map[node] = parent
-                getParentMap(node.left, node)
-                getParentMap(node.right, node)
+                if node.left:
+                    parent_map[node.left] = node
+                    getParentMap(node.left, node)
+                if node.right:
+                    parent_map[node.right] = node
+                    getParentMap(node.right, node)
         
         getParentMap(root, None)
 
@@ -24,7 +27,6 @@ class Solution:
             path_nodes_p.add(curr)
             curr = parent_map[curr]
         
-
         curr = q
         while curr and curr not in path_nodes_p:
             curr = parent_map[curr]
