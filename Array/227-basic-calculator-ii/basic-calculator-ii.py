@@ -1,21 +1,23 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        operators = set(["+", "-", "/", "*"])
         stk = []
+        operators = ['+', '-','/', '*']
+        op = '+'
         curr_num = 0
-        opr = '+'
-        for i, val in enumerate(s):
-            if val.isdigit(): 
-                curr_num = curr_num*10 + int(val)
+        for i in range(len(s)):
+            val = s[i]
+            if s[i].isdigit():
+                curr_num = curr_num*10+int(val)
             if val in operators or i == len(s)-1:
-                if opr == '+':
+                if op == '+':
                     stk.append(curr_num)
-                elif opr == '-':
+                elif op == '-':
                     stk.append(-curr_num)
-                elif opr == '*':
+                elif op == '*':
                     stk[-1] = stk[-1]*curr_num
-                elif opr == '/':
+                else:
                     stk[-1] = int(stk[-1]/curr_num)
-                opr = val
+                op = val
                 curr_num = 0
+        
         return sum(stk)
