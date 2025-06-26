@@ -1,7 +1,7 @@
 class Solution:
     def calculate(self, s: str) -> int:
         stk = []
-        operators = ['+', '-','/', '*']
+        operators = set(['+', '-','/', '*'])
         op = '+'
         curr_num = 0
         for i in range(len(s)):
