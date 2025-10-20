@@ -5,18 +5,25 @@ class Solution:
         l1, l2 = 0, 0
         n1, n2 = len(word1), len(word2)
 
-        i = 0
-        while l1 < n1 or l2 < n2:
-            if l1 < n1 and l2 < n2:
-                merged += word1[l1]
-                merged += word2[l2]
-                l1+=1
-                l2+=1
-            elif l1 < n1:
-                merged += word1[l1]
-                l1+=1
-            else:
-                merged+= word2[l2]
-                l2+=1
+        for idx, c in enumerate(word1):
+            merged += c
+            if idx < len(word2):
+                merged += word2[idx]
+        
+        for i in range(idx+1, len(word2)):
+            merged += word2[i]
+
+        # while l1 < n1 or l2 < n2:
+        #     if l1 < n1 and l2 < n2:
+        #         merged += word1[l1]
+        #         merged += word2[l2]
+        #         l1+=1
+        #         l2+=1
+        #     elif l1 < n1:
+        #         merged += word1[l1]
+        #         l1+=1
+        #     else:
+        #         merged+= word2[l2]
+        #         l2+=1
         return merged
 
