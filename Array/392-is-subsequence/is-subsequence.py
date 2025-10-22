@@ -2,13 +2,10 @@ from collections import Counter
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         if s == t: return True
-        count = 0
-        i = 0
-        while i < len(t):
-            while i < len(t) and count < len(s) and s[count] == t[i]:
-                i+=1
-                count+=1
-            if count == len(s):
-                return True
-            i+=1
-        return False
+        s_left = 0
+        t_left = 0
+        while s_left < len(s) and t_left < len(t):
+            if s[s_left] == t[t_left]:
+                s_left+=1
+            t_left+=1
+        return s_left == len(s)
