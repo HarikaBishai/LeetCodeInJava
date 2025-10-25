@@ -3,7 +3,6 @@ class Solution:
         found_sum = defaultdict(int)
         count = 0
         for num in nums:
-            
             if (k-num) in found_sum:
                 count+=1
                 found_sum[k-num]-=1
