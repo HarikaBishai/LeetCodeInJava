@@ -16,7 +16,6 @@ class Solution:
             t = ()
             for j in range(n):
                 t += (grid[j][i], )
-            print(t)
             if t in row_count:
                 count+=row_count[t]
             
