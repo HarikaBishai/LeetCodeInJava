@@ -1,7 +1,6 @@
 class Solution:
     def equalPairs(self, grid: List[List[int]]) -> int:
         row_count = {}
-    
         count = 0
         n = len(grid)
         for i in range(n):
@@ -10,7 +9,6 @@ class Solution:
                 row_count[t]+=1
             else:
                 row_count[t]=1
-
 
         for i in range(n):
             t = ()
