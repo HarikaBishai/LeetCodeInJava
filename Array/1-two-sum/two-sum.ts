@@ -4,7 +4,6 @@ function twoSum(nums: number[], target: number): number[] {
         const rem = target-nums[i];
         if(rem in seenSum) {
             return [seenSum[rem], i];
-            break;
         }
         seenSum[nums[i]] = i;
     }
