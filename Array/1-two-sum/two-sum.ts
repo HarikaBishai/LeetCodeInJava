@@ -1,13 +1,12 @@
 function twoSum(nums: number[], target: number): number[] {
     const seenSum: Record<number, number> = {};
-    let out: [number, number] = [-1, -1]
-    for(let i in nums) {
+    for(let i=0;i<nums.length; i++) {
         const rem = target-nums[i];
         if(rem in seenSum) {
-            out = [seenSum[rem], Number(i)];
+            return [seenSum[rem], i];
             break;
         }
-        seenSum[nums[i]] = Number(i);
+        seenSum[nums[i]] = i;
     }
-    return out;
+    return [-1, -1];
 };
