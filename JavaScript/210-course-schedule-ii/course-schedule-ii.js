@@ -37,8 +37,9 @@ var findOrder = function(numCourses, prerequisites) {
     let indegree = new Map();
 
 
-    for(let course of Array.from({length: numCourses}, (_, idx) => idx)) {
-        indegree.set(course, 0);
+    for(let i=0;i<numCourses; i++) {
+        indegree.set(i, 0);
+        graph.set(i, []);
     }
 
     for(let req of prerequisites) {
@@ -76,9 +77,5 @@ var findOrder = function(numCourses, prerequisites) {
         }
     }
 
-    return result.length === numCourses ? result : []
-
-
-
-
+    return result.length === numCourses ? result : [];
 };
