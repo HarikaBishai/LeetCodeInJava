@@ -5,31 +5,6 @@
  */
 
 
-// class Queue{
-//     constructor() {
-//         this.items = [];
-//         this.front = 0;
-//     }
-
-//     enqueue(ele) {
-//         this.items.push(ele);
-//     }
-
-//     dequeue() {
-//         if(this.isEmpty()) return null;
-//         const value = this.items[this.front];
-//         this.front++;
-//         return value;
-//     }
-
-//     isEmpty() {
-//         return this.front === this.items.length;
-//     }
-
-
-// }
-
-
 var findOrder = function(numCourses, prerequisites) {
     const result = []
 
@@ -44,10 +19,7 @@ var findOrder = function(numCourses, prerequisites) {
 
     for(let req of prerequisites) {
         let v = req[0];
-        let u = req[1];
-        if(!graph.has(u)) {
-            graph.set(u,[]);
-        }
+        let u = req[1];    
         graph.get(u).push(v);
         indegree.set(v, (indegree.get(v) || 0)+1);
 
