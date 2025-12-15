@@ -1,0 +1,84 @@
+/**
+ * @param {number} numCourses
+ * @param {number[][]} prerequisites
+ * @return {number[]}
+ */
+
+
+// class Queue{
+//     constructor() {
+//         this.items = [];
+//         this.front = 0;
+//     }
+
+//     enqueue(ele) {
+//         this.items.push(ele);
+//     }
+
+//     dequeue() {
+//         if(this.isEmpty()) return null;
+//         const value = this.items[this.front];
+//         this.front++;
+//         return value;
+//     }
+
+//     isEmpty() {
+//         return this.front === this.items.length;
+//     }
+
+
+// }
+
+
+var findOrder = function(numCourses, prerequisites) {
+    const result = []
+
+    let graph = new Map();
+    let indegree = new Map();
+
+
+    for(let course of Array.from({length: numCourses}, (_, idx) => idx)) {
+        indegree.set(course, 0);
+    }
+
+    for(let req of prerequisites) {
+        let v = req[0];
+        let u = req[1];
+        if(!graph.has(u)) {
+            graph.set(u,[]);
+        }
+        graph.get(u).push(v);
+        indegree.set(v, (indegree.get(v) || 0)+1);
+
+    }
+
+    let q = [];
+    let front = 0
+
+
+    for(let key of indegree.keys()) {
+        if(indegree.get(key) === 0) {
+            q.push(key);
+        }
+    }
+    
+
+    while(front != q.length) {
+        const node = q[front++]
+        result.push(node)
+        if(graph.has(node)) {
+            for(let nei of graph.get(node)) {
+                indegree.set(nei, (indegree.get(nei) || 0)-1);
+                if(indegree.get(nei) === 0) {
+                    q.push(nei)
+                }
+            }
+        }
+    }
+
+    return result.length === numCourses ? result : []
+
+
+
+
+};
