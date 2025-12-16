@@ -11,44 +11,48 @@
  */
 
 function mergeLists(list1, list2) {
-    let l1 = list1;
-    let l2 = list2;
+
 
     let dummy = new ListNode(0);
-    let result = dummy;
+    let tail = dummy;
 
-    while(l1||l2){
-        if(l1 && l2) {
-            if(l1.val < l2.val) {
-                result.next = new ListNode(l1.val);
-                l1 = l1.next;
+    while(list1 && list2){
+        if(list1 && list2) {
+            if(list1.val < list2.val) {
+                tail.next = list1;
+                list1 = list1.next;
             } else {
-                result.next =  new ListNode(l2.val);
-                l2 = l2.next;
+                tail.next =  list2;
+                list2 = list2.next;
             }
-        } else if(l1) {
-            result.next =  new ListNode(l1.val);
-            l1 = l1.next;
-        } else {
-            result.next =  new ListNode(l2.val);
-            l2 = l2.next;
         }
-        result = result.next;
+        tail = tail.next;
     }
-    console.log(dummy)
+    tail.next = list1 || list2;
     return dummy.next;
 }
 var mergeKLists = function(lists) {
-    if (!lists.length) return null;
-    while(lists.length > 1) {
-        if(lists.length == 2) {
-            lists = [mergeLists(lists[0], lists[1])];
-        } else {
-            let mid = Math.floor(lists.length/2);
-            lists = [mergeKLists(lists.slice(0, mid)), mergeKLists(lists.slice(mid, lists.length))];
+    if(!lists || lists.length == 0) return null;
 
-        }
-
+    function helper(left, right) {
+        if (left > right) return null;
+        if(left == right) return lists[left];
+        let mid = Math.floor((left+right)/2);
+        let l1 = helper(left, mid);
+        let l2 = helper(mid+1, right);
+        return mergeLists(l1, l2)
+        
     }
-    return lists[0];
+    // while(lists.length > 1) {
+    //     if(lists.length == 2) {
+    //         lists = [mergeLists(lists[0], lists[1])];
+    //     } else {
+    //         let mid = Math.floor(lists.length/2);
+    //         lists = [mergeKLists(lists.slice(0, mid)), mergeKLists(lists.slice(mid, lists.length))];
+
+    //     }
+
+    // }
+
+    return helper(0, lists.length-1);
 };
