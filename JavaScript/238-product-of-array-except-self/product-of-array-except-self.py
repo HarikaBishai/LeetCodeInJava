@@ -3,8 +3,8 @@ class Solution:
         out = [1]*len(nums)
         left = 1
         for i in range(1,len(nums)):
-            out[i] = left * nums[i-1]
             left = left * nums[i-1]
+            out[i] = left
 
 
         right = 1
