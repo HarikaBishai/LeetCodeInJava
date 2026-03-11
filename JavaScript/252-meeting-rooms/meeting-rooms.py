@@ -5,9 +5,7 @@ class Solution:
 
         for start, end in intervals:
                
-            if stk:
-                top = stk[-1]
-                if start < top[1]:
+            if stk and start < stk[-1][1]:
                     return False
             stk.append([start, end])
         return True
