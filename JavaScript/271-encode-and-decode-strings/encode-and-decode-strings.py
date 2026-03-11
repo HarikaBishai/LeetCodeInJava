@@ -20,8 +20,9 @@ class Codec:
                 j+=1
             length = int(s[i:j])
             i = j+1
-            out.append(s[i: i+length])
-            i = i+length
+            j = i+length
+            out.append(s[i: j])
+            i = j
         return out
         
 
