@@ -8,20 +8,33 @@
 from collections import deque
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
-        q = deque([root])
-        out = []
 
-        while q:
-            length = len(q)
-            for i in range(length):
-                node = q.popleft()
-                if i == length-1:
-                    out.append(node.val)
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-        return out
+        res = []
+
+        def dfs(root, depth):
+            if not root:
+                return
+            if depth == len(res):
+                res.append(root.val)
+            
+            dfs(root.right, depth+1)
+            dfs(root.left, depth+1)
+        dfs(root,0)
+        return res
+        # if not root:
+        #     return []
+        # q = deque([root])
+        # out = []
+
+        # while q:
+        #     length = len(q)
+        #     for i in range(length):
+        #         node = q.popleft()
+        #         if i == length-1:
+        #             out.append(node.val)
+        #         if node.left:
+        #             q.append(node.left)
+        #         if node.right:
+        #             q.append(node.right)
+        # return out
 
