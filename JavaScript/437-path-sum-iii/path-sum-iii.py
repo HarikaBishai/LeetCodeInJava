@@ -7,19 +7,22 @@
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         
-        
+        prefixSum = defaultdict(int)
+        prefixSum[0] = 1
 
-        def dfs(root, target):
+        def dfs(root, currSum):
             if not root:
                 return 0
             
-            count = 1 if target == root.val else 0
+            currSum += root.val
             
-            count += dfs(root.left, target-root.val)
-            count += dfs(root.right, target-root.val)
-            
+            count = prefixSum[currSum-targetSum]
+            prefixSum[currSum] +=1
+            count+=dfs(root.left, currSum)
+            count+=dfs(root.right, currSum)
+            prefixSum[currSum] -=1
+
             return count
         if not root:
             return 0
-        return dfs(root,targetSum) + self.pathSum(root.left, targetSum) + self.pathSum(root.right, targetSum)
-        
+        return  dfs(root, 0)
