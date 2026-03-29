@@ -14,7 +14,7 @@ class Solution:
             nonlocal postorder_index
             if left > right:
                 return None
-            if(postorder_index < 0): return None
+            # if(postorder_index < 0): return None
             root_val = postorder[postorder_index]
             mid = inorder_map[root_val]
 
