@@ -1,14 +1,7 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
 
-        graph = defaultdict(list)
-        n = len(isConnected)
 
-        for i in range(n):
-            for j in range(n):
-                if j!=i and isConnected[i][j] == 1:
-                    graph[i].append(j)
-        
         visited = set()
 
 
@@ -18,13 +11,13 @@ class Solution:
         def dfs(node):
             visited.add(node)
 
-            for nei in graph[node]:
-                if nei not in visited:
+            for nei in range(n):
+                if nei not in visited and isConnected[node][nei] == 1:
                     dfs(nei)
             
-        for i in range(n):
-            if i not in visited:
-                dfs(i)
+        for city in range(n):
+            if city not in visited:
+                dfs(city)
                 count+=1
             
         return count
