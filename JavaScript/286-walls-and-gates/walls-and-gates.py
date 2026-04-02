@@ -9,11 +9,9 @@ class Solution:
         n = len(rooms[0])
         INF = 2147483647
         q = deque()
-        visited = set()
         for i in range(m):
             for j in range(n):
                 if rooms[i][j] == 0:
-                    visited.add((i,j))
                     q.append((i,j))
 
         dir = [(-1,0), (1,0), (0,1), (0,-1)]
@@ -26,7 +24,6 @@ class Solution:
                     new_r = r+i
                     new_c = c+j
                     if new_r in range(m) and new_c in range(n) and rooms[new_r][new_c] == INF:
-                        visited.add((new_r, new_c))
                         rooms[new_r][new_c] = level
                         q.append((new_r, new_c))
         
