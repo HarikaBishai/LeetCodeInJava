@@ -14,22 +14,19 @@ class Solution:
             if indegree[i] == 0:
                 q.append(i)
 
-        visited = set()
-        count = 0
+        taken = 0
+        semesters = 0
 
         while q:
-            count+=1
+            semesters+=1
             for _ in range(len(q)):
                 
                 curr = q.popleft()
-                visited.add(curr)
-
-                if len(visited) == n:
-                    return count
+                taken+=1
                 
                 for nei in graph[curr]:
                     indegree[nei]-=1
                     if indegree[nei] == 0:
                         q.append(nei)
         
-        return -1
+        return semesters if taken == n else -1 
