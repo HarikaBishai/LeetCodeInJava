@@ -15,7 +15,6 @@ class Solution:
         def union(u,v):
             parentu = find(u)
             parentv = find(v)
-            print(parentu, parentv)
             ranku = rank[parentu]
             rankv = rank[parentv]
 
@@ -34,7 +33,6 @@ class Solution:
         lastEdge = [-1,-1]
         for u,v in edges:
             res = union(u,v)
-            print(res, u, v)
             if res:
                 lastEdge = [u,v]
         return lastEdge
