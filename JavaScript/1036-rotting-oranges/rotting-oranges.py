@@ -27,7 +27,6 @@ class Solution:
                         grid[new_r][new_c] = 2
                         fresh-=1
                         q.append((new_r ,new_c))
-
             
             time+=1
         
