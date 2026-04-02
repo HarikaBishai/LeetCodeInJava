@@ -15,17 +15,19 @@ class Solution:
         def union(u,v):
             parentu = find(u)
             parentv = find(v)
-            ranku = rank[parentu]
-            rankv = rank[parentv]
+            
 
             if parentu == parentv:
                 return True
-            
+            ranku = rank[parentu]
+            rankv = rank[parentv]
+
             if ranku < rankv:
                 parent[parentu] = parentv
-                rank[parentv]+=1
-            else:
+            elif rankv < ranku:
                 parent[parentv] = parentu
+            else:
+                parent[parentu] = parentv
                 rank[parentu]+=1
 
             return False
