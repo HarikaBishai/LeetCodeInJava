@@ -8,23 +8,21 @@ class Solution:
 
         h = [(0, k)]
 
-        visited = set()
+        dist = [float('inf')]*n
+        dist[k-1] = 0
 
-        time = 0
         while h:
             t, node = heapq.heappop(h)
 
-            if node in visited:
+            if t > dist[node-1]:
                 continue
-            visited.add(node)
 
-            if len(visited) == n:
-                return t
-
-            
+            dist[node-1] = t
 
             for nei , nei_t in graph[node]:
-                if nei not in visited:
+                if t + nei_t < dist[nei-1]:
                     heapq.heappush(h,(t+nei_t, nei))
 
-        return -1
+        ans = max(dist)
+
+        return -1 if ans == float('inf') else ans
