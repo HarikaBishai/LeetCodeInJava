@@ -18,9 +18,10 @@ class Solution:
         while q:
             node = q.popleft()
             visited.add(node)
-            
+            if len(visited) == numCourses:
+                return True
             for nei in graph[node]:
                 indegree[nei]-=1
                 if indegree[nei] == 0:
                     q.append(nei)
-        return len(visited) == numCourses
+        return False
