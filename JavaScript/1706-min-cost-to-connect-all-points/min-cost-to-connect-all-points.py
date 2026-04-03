@@ -16,9 +16,7 @@ class Solution:
 
             if pt in visited:
                 continue
-            
-            if len(visited) == n:
-                return min_cost
+                
             visited.add(pt)
             min_cost+= cost
 
