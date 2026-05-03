@@ -1,4 +1,10 @@
 # Write your MySQL query statement below
-
-SELECT w1.id FROM Weather w1, Weather w2 where w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY) 
-AND w1.temperature > w2.temperature;
+SELECT f.id FROM 
+(
+    SELECT id, recordDate, temperature,
+    LAG(temperature) OVER (ORDER BY recordDate) AS prevTemp,
+    LAG(recordDate) OVER (ORDER BY recordDate) AS prevDate
+FROM Weather) AS f
+WHERE f.temperature > f.prevTemp
+AND DATEDIFF(f.recordDate, f.prevDate) = 1
+;
