@@ -1,64 +1,54 @@
 class Solution {
     public List<String> fullJustify(String[] words, int maxWidth) {
-        
-
         List<String> out = new ArrayList<>();
+
         int i = 0;
-        while(i < words.length){
-            List<String> line = new ArrayList<>();
+
+        while (i<words.length) {
             int j = i;
-            
+            List<String> line = new ArrayList<>();
             line.add(words[j]);
             int len = words[j].length();
-            while (j+1 <words.length && len + words[j+1].length() + line.size() <= maxWidth ) {
-                line.add(words[j+1]);
-                len += words[j+1].length();
-                j+=1;
-            }
             
-            int spaces = maxWidth - len;
-            boolean last_line = (j == words.length -1);
-            int line_size = line.size();
-            if(last_line || line_size == 1) {
-                
-                int base = spaces / line_size;
+            while(j+1<words.length && len+words[j+1].length() + line.size()<=maxWidth) {
+                j++;
+                line.add(words[j]);
+                len += words[j].length();
+            }
 
-                StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
+            int spaces = maxWidth - len;
+            int lineSize = line.size();
+
+            if( j == words.length-1 || lineSize == 1) {
                 sb.append(line.get(0));
-                for (int k=1;k<line_size;k++){
+                for(int k = 1; k< lineSize; k++) {
                     sb.append(" ");
                     sb.append(line.get(k));
-                    
                 }
-
                 int rem = maxWidth - sb.length();
-                if(rem > 0) {
-                     sb.append(" ".repeat(rem));
-                    
-                }
-                out.add(sb.toString());
-               
+                sb.append(" ".repeat(rem));
             } else {
-            
-                int gaps = line.size()-1;
-            
+                int gaps = lineSize - 1;
                 int base = spaces / gaps;
                 int extra = spaces % gaps;
-
-
-                StringBuilder sb = new StringBuilder();
                 sb.append(line.get(0));
-                for (int k =1;k<line.size();k++){
-                    int space_gap = base;
-                    if (k-1 < extra) {
-                        space_gap+=1;
+                for(int k = 1;k<lineSize; k++){
+                    int gap_space = base;
+                    if(k-1<extra) {
+                        gap_space++;
                     }
-                    sb.append(" ".repeat(space_gap));
+                    sb.append(" ".repeat(gap_space));
                     sb.append(line.get(k));
+
                 }
-                out.add(sb.toString());
             }
+
+            out.add(sb.toString());
+
             i = j+1;
+            
+
         }
         return out;
     }
